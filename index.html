@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrift Rizki – Vintage & Second‑Hand</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Tailwind configuration for earthy palette -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: '#F5F0E1',
+              sage:  '#9DAA8F',
+              charcoal: '#2E2E2E',
+            },
+          },
+        },
+      }
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-cream text-charcoal font-sans">
+
+<!-- ==================== Navbar & Header ==================== -->
+<header class="bg-white shadow-md">
+  <div class="container mx-auto flex items-center justify-between py-4 px-6">
+    <!-- Logo -->
+    <a href="#" class="flex items-center space-x-2">
+      <img src="https://source.unsplash.com/40x40/?vintage,logo" alt="Logo" class="w-10 h-10">
+      <span class="text-2xl font-bold text-charcoal">Thrift Rizki</span>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="hidden md:flex space-x-6">
+      <a href="#" class="hover:text-sage transition-colors">Beranda</a>
+      <a href="#" class="hover:text-sage transition-colors">Katalog</a>
+      <a href="#" class="hover:text-sage transition-colors">Kategori</a>
+      <a href="#" class="hover:text-sage transition-colors">Tentang Kami</a>
+    </nav>
+
+    <!-- Icons -->
+    <div class="flex items-center space-x-4">
+      <!-- Search -->
+      <button id="searchBtn" class="text-charcoal hover:text-sage transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 3a7.5 7.5 0 006.15 13.65z"/>
+        </svg>
+      </button>
+
+      <!-- Cart -->
+      <button id="cartBtn" class="relative text-charcoal hover:text-sage transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 3h2l.7 14a2 2 0 002 0L21 3h2"/>
+        </svg>
+        <span id="cartCount"
+              class="absolute -top-2 -right-2 bg-sage text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+      </button>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button id="mobileMenuBtn" class="md:hidden text-charcoal">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile navigation (hidden by default) -->
+  <nav id="mobileNav"
+       class="md:hidden bg-white border-t border-cream hidden">
+    <a href="#" class="block px-6 py-3 hover:bg-cream">Beranda</a>
+    <a href="#" class="block px-6 py-3 hover:bg-cream">Katalog</a>
+    <a href="#" class="block px-6 py-3 hover:bg-cream">Kategori</a>
+    <a href="#" class="block px-6 py-3 hover:bg-cream">Tentang Kami</a>
+  </nav>
+</header>
+
+<!-- ==================== Hero Section ==================== -->
+<section class="relative bg-cover bg-center h-[70vh]"
+         style="background-image: url('https://source.unsplash.com/1600x900/?vintage,clothing');">
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+  <div class="container mx-auto h-full flex flex-col items-center justify-center text-center px-4 relative z-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-cream mb-4 drop-shadow-lg">
+      Temukan Gaya Vintagemu di Thrift Rizki
+    </h1>
+    <p class="text-lg md:text-xl text-cream mb-6 drop-shadow-md">
+      Koleksi pakaian second‑hand berkualitas, unik, dan ramah lingkungan.
+    </p>
+    <a href="#catalog"
+       class="bg-sage hover:bg-sage/80 text-white font-semibold py-3 px-6 rounded transition-colors">
+      Jelajahi Koleksi
+    </a>
+  </div>
+</section>
+
+<!-- ==================== Filter Kategori ==================== -->
+<section class="bg-cream py-6">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-center gap-3">
+      <button class="filter-btn active bg-sage text-white py-2 px-4 rounded-full"
+              data-category="all">Semua</button>
+      <button class="filter-btn bg-white text-charcoal hover:bg-sage hover:text-white py-2 px-4 rounded-full border border-sage"
+              data-category="jaket">Jaket & Outerwear</button>
+      <button class="filter-btn bg-white text-charcoal hover:bg-sage hover:text-white py-2 px-4 rounded-full border border-sage"
+              data-category="hoodie">Hoodie & Sweatshirt</button>
+      <button class="filter-btn bg-white text-charcoal hover:bg-sage hover:text-white py-2 px-4 rounded-full border border-sage"
+              data-category="denim">Denim & Jeans</button>
+      <button class="filter-btn bg-white text-charcoal hover:bg-sage hover:text-white py-2 px-4 rounded-full border border-sage"
+              data-category="kaos">Kaos Vintage</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Katalog Produk Grid ==================== -->
+<section id="catalog" class="py-12 bg-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-charcoal text-center mb-8">Katalog Produk</h2>
+
+    <div id="productGrid"
+         class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <!-- Example product card (duplicate & replace with real data) -->
+      <div class="product-card group bg-cream rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
+           data-category="jaket">
+        <img src="https://source.unsplash.com/400x400/?vintage,jacket"
+             alt="Jaket Vintage"
+             class="w-full h-56 object-cover group-hover:scale-105 transition-transform">
+        <div class="p-4">
+          <h3 class="font-semibold text-lg text-charcoal mb-1">Jaket Denim Retro</h3>
+          <p class="text-sm text-sage mb-1">Kondisi 9.5/10 - Mulus</p>
+          <p class="text-sm text-gray-600 mb-1">Ukuran: S, M, L, XL</p>
+          <p class="font-bold text-xl text-charcoal mb-3">IDR 150.000</p>
+          <button class="w-full bg-sage hover:bg-sage/80 text-white py-2 rounded transition-colors"
+                  onclick="addToCart(this)">
+            Tambah ke Keranjang
+          </button>
+        </div>
+      </div>
+
+      <!-- Additional product cards can be added here following the same structure -->
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Keunggulan Toko ==================== -->
+<section class="bg-cream py-12">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold text-charcoal mb-6">Kenapa Belanja di Thrift Rizki?</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="flex flex-col items-center">
+        <svg class="w-12 h-12 text-sage mb-3" fill="none" stroke="currentColor"
+             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4M7 20h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v11a2 2 0 002 2z"/>
+        </svg>
+        <h3 class="font-semibold text-charcoal mb-2">100% Original Thrift</h3>
+        <p class="text-gray-600">Setiap item dipilih dengan teliti.</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg class="w-12 h-12 text-sage mb-3" fill="none" stroke="currentColor"
+             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4M7 20h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v11a2 2 0 002 2z"/>
+        </svg>
+        <h3 class="font-semibold text-charcoal mb-2">Trusted</h3>
+        <p class="text-gray-600">Ribuan pelanggan puas.</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg class="w-12 h-12 text-sage mb-3" fill="none" stroke="currentColor"
+             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4M7 20h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v11a2 2 0 002 2z"/>
+        </svg>
+        <h3 class="font-semibold text-charcoal mb-2">Kualitas Terbaik</h3>
+        <p class="text-gray-600">Bahan terpilih, tahan lama.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Testimoni ==================== -->
+<section class="bg-white py-12">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-charcoal text-center mb-8">Apa Kata Mereka?</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="p-6 bg-cream rounded-lg shadow">
+        <p class="italic mb-4">"Baju vintage yang saya dapatkan sangat unik dan kualitasnya luar biasa!"</p>
+        <p class="font-semibold text-right">- Dinda, Jakarta</p>
+      </div>
+      <div class="p-6 bg-cream rounded-lg shadow">
+        <p class="italic mb-4">"Pengiriman cepat, dan layanan pelanggan sangat membantu."</p>
+        <p class="font-semibold text-right">- Arif, Bandung</p>
+      </div>
+      <div class="p-6 bg-cream rounded-lg shadow">
+        <p class="italic mb-4">"Harga bersaing, cocok buat yang suka fashion ramah lingkungan."</p>
+        <p class="font-semibold text-right">- Sari, Surabaya</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Footer ==================== -->
+<footer class="bg-charcoal text-cream py-8">
+  <div class="container mx-auto px-4 grid md:grid-cols-3 gap-6">
+    <div>
+      <h3 class="font-bold mb-2">Thrift Rizki</h3>
+      <p>Vintage & Second‑Hand Clothing Store</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">Navigasi</h3>
+      <ul>
+        <li><a href="#" class="hover:underline">Beranda</a></li>
+        <li><a href="#" class="hover:underline">Katalog</a></li>
+        <li><a href="#" class="hover:underline">Kategori</a></li>
+        <li><a href="#" class="hover:underline">Tentang Kami</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">Hubungi Kami</h3>
+      <p>Jl. Vintage No. 88, Jakarta</p>
+      <p>WhatsApp: 0812‑3456‑7890</p>
+      <p>Email: info@thriftrizki.id</p>
+    </div>
+  </div>
+  <div class="text-center mt-6 text-sm">
+    © 2024 Thrift Rizki. All rights reserved.
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
